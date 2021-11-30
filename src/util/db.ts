@@ -81,7 +81,7 @@ export function deleteModRole(guild: string, role: string) {
 export function addReward(guild: string, reward: RoleReward) {
 	let config = getGuildConfig(guild);
 	if(config) {
-		if(config.rewards.findIndex(r => r.role === reward.role && r.threshold === reward.threshold) > -1) {
+		if(config.rewards.findIndex(r => r.role === reward.role && r.threshold === reward.threshold) < 0) {
 			config.rewards.push(reward);
 			write();
 		}
