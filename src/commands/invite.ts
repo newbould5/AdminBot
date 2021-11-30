@@ -1,9 +1,10 @@
 import {CommandInteraction, GuildMember, User} from "discord.js";
 import {Discord, Guard, Slash, SlashOption} from "discordx";
 import {getUserInfo} from "../util/db.js";
-import {Admin} from "../util/guards.js";
+import {Admin, Server} from "../util/guards.js";
 
 @Discord()
+@Guard(Server)
 abstract class Invite {
 
 	@Guard(Admin)

@@ -10,6 +10,14 @@ export const Admin: GuardFunction<CommandInteraction> = async (interaction, clie
 	}
 }
 
+export const Server: GuardFunction<CommandInteraction> = async (interaction, client, next) => {
+	if (!interaction.guild) {
+		interaction.reply("This bot only functions in guilds.");
+	} else {
+		await next();
+	}
+}
+
 function roleAllowed(guild: string, manager: GuildMemberRoleManager | string[]): boolean {
 	if (manager instanceof GuildMemberRoleManager) {
 		let roles = manager.cache.map(role => role.id).join(',');

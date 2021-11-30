@@ -1,11 +1,11 @@
-import { ApplicationCommandPermissionData, CommandInteraction, Guild, GuildMember, Role, User } from "discord.js";
-import { Discord, Guard, Permission, Slash, SlashOption } from "discordx";
+import { CommandInteraction, GuildMember, User } from "discord.js";
+import { Discord, Guard, Slash, SlashOption } from "discordx";
 import {awardXp} from "../util/awardxp.js";
-import {getUserInfo, write} from "../util/db.js";
-import { Admin } from "../util/guards.js";
-import {ModRoles} from "../util/permissions.js";
+import {getUserInfo} from "../util/db.js";
+import { Admin, Server } from "../util/guards.js";
 
 @Discord()
+@Guard(Server)
 abstract class Xp {
 
 	@Slash("show-xp", { description: "show your current xp or that of the optionally mentioned user." })

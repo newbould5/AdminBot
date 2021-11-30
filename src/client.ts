@@ -33,4 +33,5 @@ client.on("interactionCreate", (interaction: Interaction) => {
   client.executeInteraction(interaction);
 });
 
-client.login(process.env.DISCORD_TOKEN ?? "");
+const token = process.env.TEST ? process.env.TEST_TOKEN : process.env.DISCORD_TOKEN;
+client.login(token || "");

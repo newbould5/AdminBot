@@ -1,9 +1,10 @@
 import {Channel, CommandInteraction, Role} from "discord.js";
 import {Discord, Guard, Slash, SlashOption} from "discordx";
 import {addIgnoredChannel, addModRole, addReward, deleteIgnoredChannel, deleteModRole, deleteReward, getGuildConfig} from "../util/db.js";
-import {Admin} from "../util/guards.js";
+import {Admin, Server} from "../util/guards.js";
 
 @Discord()
+@Guard(Server)
 @Guard(Admin)
 abstract class GuildConfigCommand {
 
