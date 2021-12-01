@@ -12,9 +12,9 @@ abstract class Invite {
 	private invitedBy(@SlashOption("user", { type: "USER", required: true }) user: User | GuildMember, interaction: CommandInteraction) {
 		let info = getUserInfo(`${interaction.guild?.id}-${user.id}`);
 		if (info?.invitedBy) {
-			interaction.reply(`${user} was invited by <@${info.invitedBy}>`);
+			interaction.reply({content:`${user} was invited by <@${info.invitedBy}>`,ephemeral:true});
 		} else {
-			interaction.reply("I don't know :slight_frown:");
+			interaction.reply({content:"I don't know :slight_frown:",ephemeral:true});
 		}
 	}
 

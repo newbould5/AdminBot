@@ -14,7 +14,8 @@ export function awardXp(member: GuildMember, amount: number): UserInfo {
 	const rewards = getGuildConfig(member.guild.id)?.rewards || [];
 	let roles = member.roles.cache.map(r => r.id);
 	rewards.forEach(reward => {
-		if(userInfo?.xp || 0 >= reward.threshold && !roles.includes(reward.role)) {
+		const xp = userInfo?.xp || 0;
+		if(xp >= reward.threshold && !roles.includes(reward.role)) {
 			member.roles.add(reward.role);
 			//TODO send message
 		}

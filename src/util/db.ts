@@ -24,6 +24,10 @@ export function getUserInfo(id: string): UserInfo | undefined {
 	return db.data?.info.find(u => u.id === id);
 }
 
+export function getUserInfoByGuild(guild: string): UserInfo[] {
+	return db.data?.info.filter(info => info.id.split("-")[0] == guild) || [];
+}
+
 export function createUserInfo(info: UserInfo): UserInfo {
 	let stored = db.data?.info.find(u => u.id === info.id);
 	if(stored) {
